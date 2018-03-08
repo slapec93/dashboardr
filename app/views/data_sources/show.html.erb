@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @data_source.username %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @data_source.password %>
+</p>
+
+<p>
+  <strong>Db server name:</strong>
+  <%= @data_source.db_server_name %>
+</p>
+
+<p>
+  <strong>Db name:</strong>
+  <%= @data_source.db_name %>
+</p>
+
+<p>
+  <strong>Table name:</strong>
+  <%= @data_source.table_name %>
+</p>
+
+<%= link_to 'Edit', edit_data_source_path(@data_source) %> |
+<%= link_to 'Back', data_sources_path %>
