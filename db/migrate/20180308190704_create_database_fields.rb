@@ -4,6 +4,7 @@ class CreateDatabaseFields < ActiveRecord::Migration[5.1]
       t.string :type
       t.string :db_name
       t.string :alias
+      t.references :data_source, foreign_key: true
 
       t.timestamps
     end

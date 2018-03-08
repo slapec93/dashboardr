@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :charts
   resources :dashboards
   resources :data_sources
   resources :data_source_types

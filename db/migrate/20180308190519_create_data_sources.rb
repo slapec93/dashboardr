@@ -6,6 +6,7 @@ class CreateDataSources < ActiveRecord::Migration[5.1]
       t.string :db_server_name
       t.string :db_name
       t.string :table_name
+      t.references :data_source_types
 
       t.timestamps
     end
