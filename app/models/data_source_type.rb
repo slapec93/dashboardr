@@ -1,0 +1,2 @@
+class DataSourceType < ApplicationRecord
+end

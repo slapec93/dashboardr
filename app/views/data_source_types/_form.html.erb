@@ -1,0 +1,22 @@
+<%= form_with(model: data_source_type, local: true) do |form| %>
+  <% if data_source_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(data_source_type.errors.count, "error") %> prohibited this data_source_type from being saved:</h2>
+
+      <ul>
+      <% data_source_type.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :type_name %>
+    <%= form.text_field :type_name, id: :data_source_type_type_name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
