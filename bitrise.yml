@@ -1,0 +1,44 @@
+format_version: "2"
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: ""
+workflows:
+  test:
+    steps:
+    - script@1.1.5:
+        title: Build docker image
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # debug log
+            set -x
+
+            # write your script here
+            docker-compose build
+    - script@1.1.5:
+        title: Build database
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # debug log
+            set -x
+
+            # write your script here
+            docker-compose up
+            docker-compose run web rails db:create
+            docker-compose run web rails db:migrate
+    - script@1.1.5:
+        title: Run Rspec tests
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # debug log
+            set -x
+
+            # write your script here
+            docker-compose run web bundle exec rspec
