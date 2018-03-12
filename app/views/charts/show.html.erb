@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Position x:</strong>
+  <%= @chart.position_x %>
+</p>
+
+<p>
+  <strong>Position y:</strong>
+  <%= @chart.position_y %>
+</p>
+
+<p>
+  <strong>Width:</strong>
+  <%= @chart.width %>
+</p>
+
+<p>
+  <strong>Height:</strong>
+  <%= @chart.height %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @chart.title %>
+</p>
+
+<p>
+  <strong>Dashboard:</strong>
+  <%= @chart.dashboard %>
+</p>
+
+<p>
+  <strong>Data source:</strong>
+  <%= @chart.data_source %>
+</p>
+
+<%= link_to 'Edit', edit_chart_path(@chart) %> |
+<%= link_to 'Back', charts_path %>

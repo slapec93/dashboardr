@@ -1,0 +1,52 @@
+<%= form_with(model: chart, local: true) do |form| %>
+  <% if chart.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(chart.errors.count, "error") %> prohibited this chart from being saved:</h2>
+
+      <ul>
+      <% chart.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :position_x %>
+    <%= form.text_field :position_x, id: :chart_position_x %>
+  </div>
+
+  <div class="field">
+    <%= form.label :position_y %>
+    <%= form.text_field :position_y, id: :chart_position_y %>
+  </div>
+
+  <div class="field">
+    <%= form.label :width %>
+    <%= form.text_field :width, id: :chart_width %>
+  </div>
+
+  <div class="field">
+    <%= form.label :height %>
+    <%= form.text_field :height, id: :chart_height %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :chart_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dashboard_id %>
+    <%= form.text_field :dashboard_id, id: :chart_dashboard_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :data_source_id %>
+    <%= form.text_field :data_source_id, id: :chart_data_source_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

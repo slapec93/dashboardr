@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Data Sources</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Password</th>
+      <th>Db server name</th>
+      <th>Db name</th>
+      <th>Table name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @data_sources.each do |data_source| %>
+      <tr>
+        <td><%= data_source.username %></td>
+        <td><%= data_source.password %></td>
+        <td><%= data_source.db_server_name %></td>
+        <td><%= data_source.db_name %></td>
+        <td><%= data_source.table_name %></td>
+        <td><%= link_to 'Show', data_source %></td>
+        <td><%= link_to 'Edit', edit_data_source_path(data_source) %></td>
+        <td><%= link_to 'Destroy', data_source, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Data Source', new_data_source_path %>
