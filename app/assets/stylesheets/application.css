@@ -12,4 +12,15 @@
  *
  *= require_tree .
  *= require_self
+ *= require plugins/sidebar.css
+ *= require plugins/icheck/all.css
+ *= require plugins/bootstrap-colorpicker.min.css
  */
+
+ .nav-link-custom {
+     display: flex;
+     align-items: center;
+ }
+ .nav-link-custom svg {
+     margin-right: 5px;
+ }
