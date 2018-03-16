@@ -42,3 +42,64 @@ workflows:
 
             # write your script here
             docker-compose run web bundle exec rspec
+  web-console:
+    steps:
+        - script@1.1.5:
+            title: Start up Rails console for web
+            inputs:
+            - content: |-
+                #!/usr/bin/env bash
+                # fail if any commands fails
+                set -e
+                # debug log
+                set -x
+    
+                # write your script here
+                sudo docker-compose start web
+                sudo docker-compose exec web rails c
+  remote-db-console:
+    steps:
+        - script@1.1.5:
+            title: Start up Rails console for web
+            inputs:
+            - content: |-
+                #!/usr/bin/env bash
+                # fail if any commands fails
+                set -e
+                # debug log
+                set -x
+    
+                # write your script here
+                sudo docker-compose start remote_db
+                sudo docker-compose exec remote_db psql -U postgres
+  _init-remote-db:
+    steps:
+        - script@1.1.5:
+            title: Start up Rails console for web
+            inputs:
+            - content: |-
+                #!/usr/bin/env bash
+                # fail if any commands fails
+                set -e
+                # debug log
+                set -x
+    
+                # write your script here
+                sudo docker-compose start remote_db
+                sudo docker-compose exec remote_db ./_scripts/remote_pq_db_initializer.sh
+  up:
+    before_run:
+    - _init-remote-db
+    steps:
+        - script@1.1.5:
+            title: Start up Rails console for web
+            inputs:
+            - content: |-
+                #!/usr/bin/env bash
+                # fail if any commands fails
+                set -e
+                # debug log
+                set -x
+    
+                # write your script here
+                sudo docker-compose up

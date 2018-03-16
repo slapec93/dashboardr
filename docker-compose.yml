@@ -6,8 +6,14 @@ services:
       - ./tmp/db:/var/lib/postgresql/data
   remote_db:
     image: postgres
+    restart: always
+    # entrypoint: docker-entrypoint.sh
+    # command: |-
+    #   chmod +x _scripts/remote_pq_db_initializer.sh
+    #   ./_scripts/remote_pq_db_initializer.sh
     volumes:
       - ./tmp/remote_db:/var/lib/postgresql/data
+      - ./_scripts:/_scripts
   ms_db:
     image: microsoft/mssql-server-linux:2017-latest
     volumes:
