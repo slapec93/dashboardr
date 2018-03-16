@@ -1,0 +1,1 @@
+REMOTE_PQ_DATABASE = YAML.load_file(File.join(Rails.root, "config", "remote_pq_database.yml"))[Rails.env.to_s]  
