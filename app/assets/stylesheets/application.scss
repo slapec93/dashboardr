@@ -13,3 +13,35 @@
  *= require_tree .
  *= require_self
  */
+
+.dash-nav-link {
+    display: flex;
+    align-items: center;
+
+    .dash-svg-wrapper {
+        flex-grow: 0.25;
+        flex-basis: 20%;
+    }
+
+    &:visited {
+        color: black;
+    }
+    &:hover {
+        color:  white;
+    }
+}
+.dash-sidebar {
+    height: 100vh;
+}
+.dash-nav {
+    padding-top: 1rem;
+}
+.dd-list-elements .dash-svg-wrapper{
+    text-align: right;
+    svg{
+        margin-right: 10px;
+    }
+}
+.dash-row{
+    margin-top: 20px;
+}

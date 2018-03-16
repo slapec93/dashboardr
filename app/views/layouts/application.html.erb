@@ -1,14 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Dashboardr</title>
-    <%= csrf_meta_tags %>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title><%= @title %></title>
+    <%= csrf_meta_tags %>
+    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
+      <div class="dash-sidebar container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light dash-sidebar dash-nav sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="dash-nav-link nav-link active dd-list" href="#">
+                  <div class="dash-svg-wrapper"><i class="fas fa-tachometer-alt fa-2x"></i></div>
+                  <div>
+                    Dashboards
+                  </div>
+                </a>
+                <ul class="nav flex-column dd-list-elements">
+                  <li class="nav-item">
+                    <a class="dash-nav-link nav-link active" href="<%= new_dashboard_path %>">
+                      <div class="dash-svg-wrapper"><i class="fas fa-plus-circle"></i></div>
+                      <div>
+                        Add
+                      </div>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="dash-nav-link nav-link active" href="<%= dashboards_path %>">
+                      <div class="dash-svg-wrapper"><i class="fas fa-list-ul"></i></div>
+                      <div>
+                        List
+                      </div>
+                    </a>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="dash-nav-link nav-link" href="<%= data_sources_path %>">
+                  <div class="dash-svg-wrapper"><i class="fas fa-database fa-2x"></i></div>
+                  <div>Data sources</div>
+                </a>
+              </li>
+            </ul>
+
+            <%= react_component('Properties') %>
+          </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h1 class="h2"><%= @title %></h1>
+          </div>
+          <%= yield %>
+          <canvas class="my-4 chartjs-render-monitor" id="myChart" width="1067" height="450" style="display: block; width: 1067px; height: 450px;"></canvas>
+
+        </main>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
   </body>
 </html>
