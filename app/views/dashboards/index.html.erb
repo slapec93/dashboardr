@@ -1,11 +1,20 @@
 <% @title="My dashboards" %>
-
-    <% @dashboards.each do |dashboard| %>
-      <div class="col-lg-4 dashboard-icon-container" >
-      	<i class="fa fa-tachometer fa-5x"></i><br/>
-      	<%= label_tag dashboard.name %>
-        <%= link_to "Show", "dashboards/#{dashboard.id}", class: "btn btn-primary" %>
-        <%= link_to 'Destroy', dashboard, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+    <div class="container">
+    <% @dashboards.each_with_index do |dashboard, index| %>
+    <% if (index % 4) == 0 %>
+      <div class="row dash-row">
+    <% end %>
+        <div class="col-lg-3 dash-dashboard-list-element" >
+          <div><i class="fa fa-tachometer-alt fa-5x"></i></div>
+          <p><%= dashboard.title %></p>
+          <div>
+          <%= link_to "Show", "dashboards/#{dashboard.id}", class: "btn btn-primary" %>
+          <%= link_to 'Destroy', dashboard, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+          </div>
+        </div>
+    <% if ((index + 1) % 4) == 0 %>
       </div>
     <% end %>
+    <% end %>
+    </div>
 <br>
