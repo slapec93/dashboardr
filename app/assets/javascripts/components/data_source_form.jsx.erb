@@ -1,0 +1,65 @@
+class DataSourceForm extends React.Components {
+    constructor() {
+        super();
+        this.state = {
+            isVisible: true,
+        };
+    }
+    render(){
+    <div>
+    <div class="col-lg-6">
+        <%= form_with(model: data_source, local: true) do |form| %>
+            <% if data_source.errors.any? %>
+            <div id="error_explanation">
+                <h2><%= pluralize(data_source.errors.count, "error") %> prohibited this data_source from being saved:</h2>
+
+                <ul>
+                <% data_source.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+                </ul>
+            </div>
+            <% end %>
+
+            <div class="field">
+            <label for="data_source_type">Data source type</label>
+            <%= form.select :data_source_type_id, DataSourceType.all.pluck(:type_name, :id), {}, {class: "custom-select d-block w-100", id: :data_source_type} %>
+            </div>
+            
+            <div class="field">
+            <%= form.label :db_server_name %>
+            <%= form.text_field :db_server_name, id: :data_source_db_server_name, class: "form-control" %>
+            </div>
+
+            <div class="field">
+            <%= form.label :db_name %>
+            <%= form.text_field :db_name, id: :data_source_db_name, class: "form-control" %>
+            </div>
+
+            <div class="field">
+            <%= form.label :username %>
+            <%= form.text_field :username, id: :data_source_username, class: "form-control" %>
+            </div>
+
+            <div class="field">
+            <%= form.label :password %>
+            <%= form.password_field :password, id: :data_source_password, class: "form-control" %>
+            </div>
+
+            <div class="field">
+            <a></a>
+            </div>
+
+            <div class="field">
+            <%= form.label :table_name %>
+            <%= form.text_field :table_name, id: :data_source_table_name, class: "form-control" %>
+            </div>
+
+            <div class="actions">
+            <input type="submit" class="btn btn-primary" value="<%= "#{(action_name=="new" ? "Add" : action_name.capitalize)}" %> data source"></input>
+            </div>
+        <% end %>
+        </div>
+    </div>
+    }
+}

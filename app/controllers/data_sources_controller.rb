@@ -61,6 +61,10 @@ class DataSourcesController < ApplicationController
     end
   end
 
+  def available_table_names
+    RemotePSQLData.new()
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_data_source
@@ -69,6 +73,6 @@ class DataSourcesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def data_source_params
-      params.require(:data_source).permit(:username, :password, :db_server_name, :db_name, :table_name)
+      params.require(:data_source).permit(:username, :password, :db_server_name, :db_name, :table_name, :data_source_type_id)
     end
 end

@@ -103,3 +103,19 @@ workflows:
     
                 # write your script here
                 sudo docker-compose up
+  mands:
+    steps:
+    - script@1.1.5:
+        title: Migrate and seed the db schema
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # debug log
+            set -x
+
+            # write your script here
+            sudo docker-compose start web
+            sudo docker-compose exec web rails db:migrate
+            sudo docker-compose exec web rails db:seed
