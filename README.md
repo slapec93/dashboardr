@@ -3,7 +3,7 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-This repository is part of a university thesis.
+This repository is part of a university thesis. The documentation can be found in a separate repository in Latex format.
 
 Things you may want to cover:
 
